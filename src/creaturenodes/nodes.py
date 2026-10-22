@@ -422,7 +422,7 @@ class LMST2T:
                 "system_prompt": ("STRING", {
                     "multiline": True
                 }),
-                "model": (["IBM Granite 4 Micro", "Gemma 3 1B"],),
+                "model": (["IBM Granite 4 Micro", "Gemma 3 1B", "Qwen 3.8 27B", "Qwen 3.5 9B"],),
                 "port": ("INT", {
                     "default": 1234
                 })
@@ -436,7 +436,9 @@ class LMST2T:
         
         modelEnum = {
             "IBM Granite 4 Micro": "ibm/granite-4-micro",
-            "Gemma 3 1B": "google/gemma-3-1b"
+            "Gemma 3 1B": "google/gemma-3-1b",
+            "Qwen 3.8 27B": "qwen/qwen3.8-27b",
+            "Qwen 3.5 9B": "qwen/qwen3.5-9b"
         }
         
         response = requests.post(f'http://localhost:{port}/api/v1/chat', json={
