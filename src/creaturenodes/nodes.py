@@ -263,7 +263,7 @@ class T2IModelSwitch:
         elif selected_model == "Z IMAGE":
             if z_image is None: needed.append("z_image")
         elif selected_model == "Flux2 Klein":
-            if z_image is None: needed.append("flux2_klein")
+            if flux2_klein is None: needed.append("flux2_klein")
         
         return needed
     
