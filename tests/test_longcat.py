@@ -154,3 +154,9 @@ def test_v2v_longcat_option():
     assert "LongCat Extend" in ImageEditingModelSwitch.INPUT_TYPES()["required"]["selected_model"][0]
     node = ImageEditingModelSwitch()
     assert node.image_editing_model_switch("LongCat Extend", longcat_extend="frames") == ("frames",)
+
+
+def test_seed_offset():
+    node = lc.SeedOffset()
+    assert node.offset(72304823649721, 3) == (72304823649724,)
+    assert node.offset((1 << 64) - 1, 1) == (0,)

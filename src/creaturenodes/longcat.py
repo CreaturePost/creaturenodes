@@ -207,10 +207,32 @@ class PromptLinePicker:
         return (pick_line(text, int(index)),)
 
 
+class SeedOffset:
+    """seed + offset (wraps at 2**64), e.g. a different seed for each LongCat segment."""
+
+    CATEGORY = "CreatureNodes/LongCat"
+    RETURN_TYPES = ("INT",)
+    RETURN_NAMES = ("seed",)
+    FUNCTION = "offset"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF}),
+                "offset": ("INT", {"default": 1, "min": 0, "max": 1000}),
+            }
+        }
+
+    def offset(self, seed, offset):
+        return ((int(seed) + int(offset)) % (1 << 64),)
+
+
 LONGCAT_NODES = {
     "LongCat Settings": LongCatSettings,
     "Lazy Image Index Switch": LazyImageIndexSwitch,
     "Frame Rate Resample": FrameRateResample,
     "LongCat Bucket": LongCatBucket,
     "Prompt Line Picker": PromptLinePicker,
+    "Seed Offset": SeedOffset,
 }
