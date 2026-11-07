@@ -229,6 +229,7 @@ Model switch nodes live in switches.py (no heavy imports, so they can be unit te
 """
 from .switches import T2IModelSwitch, I2VModelSwitch, I2IModelSwitch, ImageEditingModelSwitch  # noqa: E402,F401
 from .longcat import LONGCAT_NODES  # noqa: E402
+from .alphagen import ALPHAGEN_NODES  # noqa: E402
 
 
 class LMST2T:
@@ -346,6 +347,7 @@ NODE_CLASS_MAPPINGS = {
     "LM Studio T2T": LMST2T,
     "LM Studio I2T": LMSI2T,
     **LONGCAT_NODES,
+    **ALPHAGEN_NODES,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -360,4 +362,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "LM Studio T2T": "LM Studio T2T",
     "LM Studio I2T": "LM Studio I2T",
     **{name: f"{name} (CreatureNodes)" for name in LONGCAT_NODES},
+    **{name: f"{name} (CreatureNodes)" for name in ALPHAGEN_NODES},
 }
