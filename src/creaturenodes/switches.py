@@ -76,6 +76,7 @@ class I2VModelSwitch(_LazySwitch):
         "LTX 2.5": ["ltx_25_image", "ltx_25_audio"],
         "Wan 2.2": ["wan_22_image"],  # Wan has no audio
         "Seedance 2.5": ["seedance_25_image", "seedance_25_audio"],
+        "LongCat Video": ["longcat_image"],  # no audio; RIFE-interpolated to 30 fps
     }
     INPUTS = {
         "ltx_20_image": "IMAGE",
@@ -89,6 +90,7 @@ class I2VModelSwitch(_LazySwitch):
         "wan_22_image": "IMAGE",
         "seedance_25_image": "IMAGE",
         "seedance_25_audio": "AUDIO",
+        "longcat_image": "IMAGE",
     }
     # Frame rate the LTX branches are sampled at. Plain value, not lazy, so it is
     # cheap to always read. Other models render at a fixed native rate.
@@ -100,6 +102,7 @@ class I2VModelSwitch(_LazySwitch):
         "MiniMax H3 Ref": 24.0,
         "Wan 2.2": 16.0,
         "Seedance 2.5": 24.0,
+        "LongCat Video": 30.0,
     }
     RETURN_TYPES = ("IMAGE", "AUDIO", "FLOAT")
     RETURN_NAMES = ("image", "audio", "fps")
@@ -147,6 +150,7 @@ class ImageEditingModelSwitch(_LazySwitch):
         "Wan 2.2 Fun Control": ["wan_22_fun_control"],
         "LTX 2.3 IC-LoRA": ["ltx_23_ic_lora"],
         "MiniMax H3 Ref": ["mm_h3_ref"],
+        "LongCat Extend": ["longcat_extend"],
     }
     INPUTS = {
         "lucy_edit_v11_dev": "IMAGE",
@@ -154,6 +158,7 @@ class ImageEditingModelSwitch(_LazySwitch):
         "wan_22_fun_control": "IMAGE",
         "ltx_23_ic_lora": "IMAGE",
         "mm_h3_ref": "IMAGE",
+        "longcat_extend": "IMAGE",
     }
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
